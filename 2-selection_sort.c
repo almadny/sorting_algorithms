@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "sort.h"
 /*
- * bubble_sort - sorts array using bubble sort technique
+ * selection_sort - sorts array using bubble sort technique
  *
  * @array: array to be sort
  * @size: sizw of the array
@@ -10,25 +10,31 @@
  * Return: Nothing
  */
 
-void bubble_sort(int *array, size_t size)
+void selection_sort(int *array, size_t size)
 {
-	unsigned int k;
+	unsigned int minInd;
 	int tmp;
+	int min;
 
 	if (size < 2)
 		return;
 
 	for (int i = 0; i < size - 1; i++)
 	{
+		min = array[i];
 		for (int j = i + 1; j < size; j++)
 		{
-			if (array[j - 1] > array[j])
+			if (array[j] < min)
 			{
-				tmp = array[j - 1];
-				array[j - 1] = array[j];
-				array[j] = tmp;
+				min = array[j];
+				minInd = j;
 			}
-			k++;
+		}
+		if (array[i] != min)
+		{
+			tmp = array[i];
+			array[i] = min;
+			array[minInd] = tmp;
 		}
 		print_array(int *array, size_t size);
 	}
